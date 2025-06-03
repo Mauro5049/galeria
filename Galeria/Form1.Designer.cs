@@ -77,6 +77,7 @@
             paintingQuote.Size = new Size(213, 25);
             paintingQuote.TabIndex = 3;
             paintingQuote.Text = "\"O fracasso é inevitável.\"";
+            paintingQuote.Click += paintingQuote_Click;
             // 
             // nextButton
             // 
