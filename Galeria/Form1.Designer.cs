@@ -39,6 +39,7 @@
             // 
             // paintingTitle
             // 
+            paintingTitle.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             paintingTitle.AutoSize = true;
             paintingTitle.Font = new Font("Segoe UI", 27F, FontStyle.Regular, GraphicsUnit.Pixel);
             paintingTitle.Location = new Point(285, 273);
@@ -49,9 +50,10 @@
             // 
             // painting
             // 
+            painting.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             painting.ImageLocation = "";
             painting.InitialImage = null;
-            painting.Location = new Point(276, 48);
+            painting.Location = new Point(285, 70);
             painting.Name = "painting";
             painting.Size = new Size(200, 200);
             painting.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -60,6 +62,7 @@
             // 
             // paintingAuthor
             // 
+            paintingAuthor.Anchor = AnchorStyles.None;
             paintingAuthor.AutoSize = true;
             paintingAuthor.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Pixel);
             paintingAuthor.Location = new Point(348, 310);
@@ -67,9 +70,11 @@
             paintingAuthor.Size = new Size(56, 12);
             paintingAuthor.TabIndex = 2;
             paintingAuthor.Text = "Mauro Lopes";
+            paintingAuthor.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // paintingQuote
             // 
+            paintingQuote.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             paintingQuote.AutoSize = true;
             paintingQuote.Font = new Font("Segoe UI", 14.25F, FontStyle.Italic, GraphicsUnit.Point, 0);
             paintingQuote.Location = new Point(270, 338);
@@ -97,6 +102,7 @@
             prevButton.TabIndex = 5;
             prevButton.Text = "<-";
             prevButton.UseVisualStyleBackColor = true;
+            prevButton.Click += prevButton_Click;
             // 
             // mainWindow
             // 
@@ -110,6 +116,7 @@
             Controls.Add(painting);
             Controls.Add(paintingTitle);
             Name = "mainWindow";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Galeria";
             Load += mainWindow_Load;
             ((System.ComponentModel.ISupportInitialize)painting).EndInit();

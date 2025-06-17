@@ -4,17 +4,38 @@ namespace Galeria
     using Microsoft.WindowsAPICodePack.Shell;
     using Microsoft.WindowsAPICodePack.Shell.PropertySystem;
 
-    // using MetadataExtractor;
     public partial class mainWindow : Form
     {
-        string fallbackImagePath = "C:\\Users\\CJ3027538\\Pictures\\ostra.png";
+
+        string fallbackImagePath = "C:\\Users\\CJ3027538\\Pictures\\igor.png";
         string fallbackImageName = "Obra sem titulo";
         string fallbackAuthorName = "Autor anonimo";
         string fallbackQuote = "Sem frase.";
 
+        string imageDirectory = "C:\\Users\\CJ3027538\\Pictures";
+
+        List<string> currentFiles = new List<string>();
+
+        int imageIndex = 0;
+
         public mainWindow()
         {
             InitializeComponent();
+            loadImages();
+        }
+
+        private void loadImages()
+        {
+            if (Directory.Exists(imageDirectory))
+            {
+                foreach (var file in Directory.GetFiles(imageDirectory))
+                {
+                    if (file.Contains(".png"))
+                    {
+                        currentFiles.Add(file);
+                    }
+                }
+            }
         }
 
         private void changeImage(string newImagePath)
@@ -34,23 +55,42 @@ namespace Galeria
                 var imageAuthor = String.Join(",", imageAuthors);
                 paintingAuthor.Text = imageAuthor;
             }
+            paintingTitle.Location = new Point((this.Width + paintingTitle.Text.Length * 27) / 4, paintingTitle.Location.Y);
         }
 
         private void mainWindow_Load(object sender, EventArgs e)
         {
-            if (painting.ImageLocation == "")
+            if (currentFiles.Count == 0)
             {
                 changeImage(fallbackImagePath);
+            }
+            else
+            {
+                changeImage(currentFiles[imageIndex]);
             }
         }
 
         private void nextButton_Click(object sender, EventArgs e)
         {
+            if (imageIndex < currentFiles.Count - 1)
+            {
+                imageIndex++;
+                changeImage(currentFiles[imageIndex]);
+            }
         }
 
         private void paintingQuote_Click(object sender, EventArgs e)
         {
+           
+        }
 
+        private void prevButton_Click(object sender, EventArgs e)
+        {
+            if (imageIndex > 0)
+            {
+                imageIndex--;
+                changeImage(currentFiles[imageIndex]);
+            }
         }
     }
 }
