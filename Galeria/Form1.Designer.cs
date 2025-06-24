@@ -53,7 +53,7 @@
             painting.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             painting.ImageLocation = "";
             painting.InitialImage = null;
-            painting.Location = new Point(285, 70);
+            painting.Location = new Point(308, 70);
             painting.Name = "painting";
             painting.Size = new Size(200, 200);
             painting.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -86,7 +86,7 @@
             // 
             // nextButton
             // 
-            nextButton.Location = new Point(439, 396);
+            nextButton.Location = new Point(453, 396);
             nextButton.Name = "nextButton";
             nextButton.Size = new Size(75, 23);
             nextButton.TabIndex = 4;
@@ -115,6 +115,7 @@
             Controls.Add(paintingAuthor);
             Controls.Add(painting);
             Controls.Add(paintingTitle);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "mainWindow";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Galeria";

@@ -38,6 +38,12 @@ namespace Galeria
             }
         }
 
+        private int centerText(Label text)
+        {
+            Size textSize = TextRenderer.MeasureText(text.Text, text.Font);
+            return (this.ClientSize.Width - textSize.Width) / 2;
+        }
+
         private void changeImage(string newImagePath)
         {
             painting.ImageLocation = newImagePath;
@@ -55,7 +61,9 @@ namespace Galeria
                 var imageAuthor = String.Join(",", imageAuthors);
                 paintingAuthor.Text = imageAuthor;
             }
-            paintingTitle.Location = new Point((this.Width + paintingTitle.Text.Length * 27) / 4, paintingTitle.Location.Y);
+            paintingTitle.Location = new Point(centerText(paintingTitle), paintingTitle.Location.Y);
+            paintingQuote.Location = new Point(centerText(paintingQuote), paintingQuote.Location.Y);
+            paintingAuthor.Location = new Point(centerText(paintingAuthor), paintingAuthor.Location.Y);
         }
 
         private void mainWindow_Load(object sender, EventArgs e)
